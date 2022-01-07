@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
@@ -27,6 +28,7 @@ public class IntroActivity extends AppCompatActivity implements NavigationView.O
     MeowBottomNavigation btn_navigation;
     NavigationView navigationView;
     private Toolbar toolbar;
+    TextView layout_title;
 
 
     @Override
@@ -50,8 +52,9 @@ public class IntroActivity extends AppCompatActivity implements NavigationView.O
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        btn_navigation = findViewById(R.id.btn_navigation);
 
+        btn_navigation = findViewById(R.id.btn_navigation);
+        layout_title = findViewById(R.id.layout_title);
         navigationView = findViewById(R.id.navigation_menu);
 
         navigationView.bringToFront();
@@ -72,12 +75,15 @@ public class IntroActivity extends AppCompatActivity implements NavigationView.O
 
                      case 1:
                          fragment = new WalletFragment();
+                         layout_title.setText("Wallet");
                          break;
                      case 2:
                          fragment = new HomeFragment();
+                         layout_title.setText("Home");
                          break;
                      case 3:
                          fragment = new ChartFragment();
+                         layout_title.setText("Chart");
                          break;
 
                  }
@@ -133,8 +139,6 @@ public class IntroActivity extends AppCompatActivity implements NavigationView.O
 
         return super.onCreateOptionsMenu(menu);
     }
-
-
 
 
     public void loadFragment(Fragment fragment){
